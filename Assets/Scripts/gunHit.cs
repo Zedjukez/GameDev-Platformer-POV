@@ -12,9 +12,20 @@ public class gunHit : MonoBehaviour
 
 
 
-    void typeSwitch()
+    public void typeSwitch()
     {
-
+        if (Input.GetKeyDown("1"))
+        {
+            index = 0;
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            index = 1;
+        }
+        if (Input.GetKeyDown("3"))
+        {
+            index = 2;
+        }
     }
     // Update is called once per frame
     void Update()
