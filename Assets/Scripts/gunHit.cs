@@ -11,6 +11,11 @@ public class gunHit : MonoBehaviour
     private int index;
 
 
+
+    void typeSwitch()
+    {
+
+    }
     // Update is called once per frame
     void Update()
     {
