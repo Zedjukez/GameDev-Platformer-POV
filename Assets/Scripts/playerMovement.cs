@@ -32,6 +32,11 @@ public class playerMovement : MonoBehaviour
         mouseLook();
         RotateBody();
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TryInterat();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TryJump();
@@ -66,8 +71,13 @@ public class playerMovement : MonoBehaviour
     {
         RaycastHit hit;
         if(Physics.Raycast(playerEye.position, playerEye.forward, out hit, interactRange)){
-            IInteractable.
 
+            IInteractable hitInteractable = hit.collider.gameObject.GetComponent<IInteractable>();
+
+            if (hitInteractable != null)
+            {
+                hitInteractable.Interact();
+            }
         }
     }
     private void TryJump()
