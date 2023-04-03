@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   enemySpeed: 0
-  type: 
+  type: Shadow

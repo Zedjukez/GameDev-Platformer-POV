@@ -7,6 +7,7 @@ public class gunHit : MonoBehaviour
     public Transform firePoint; // The point from which the raycast is fired
     public float range = 100f; // The maximum distance the raycast can travel
     public gunPickup gunCheck;
+    public gunStats currentGun;
     public List<gunStats> gunTypes = new List<gunStats>();
     private int index;
 
@@ -17,14 +18,17 @@ public class gunHit : MonoBehaviour
         if (Input.GetKeyDown("1"))
         {
             index = 0;
+            currentGun = gunTypes[index];
         }
         if (Input.GetKeyDown("2"))
         {
             index = 1;
+            currentGun = gunTypes[index];
         }
         if (Input.GetKeyDown("3"))
         {
             index = 2;
+            currentGun = gunTypes[index];
         }
     }
     // Update is called once per frame
@@ -32,7 +36,7 @@ public class gunHit : MonoBehaviour
     {
 
 
-
+        typeSwitch(); 
 
         if (gunCheck.gunActive == false)
         {
@@ -54,7 +58,8 @@ public class gunHit : MonoBehaviour
             Debug.Log(hit.transform.gameObject.name);
            if(hit.transform.gameObject.GetComponent<enemyScript>())
             {
-               if(hit.transform.gameObject.GetComponent<enemyScript>().stats.type == gunTypes[index].type)
+               
+               if (hit.transform.gameObject.GetComponent<enemyScript>().stats.type == currentGun.type)
                 {
                     Destroy(hit.transform.gameObject);
                 }

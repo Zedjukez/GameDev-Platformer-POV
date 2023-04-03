@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c7d722ea1f0e54d95c158ce077ab92, type: 3}
   m_Name: shadowGun
   m_EditorClassIdentifier: 
-  type: 
+  type: Shadow
