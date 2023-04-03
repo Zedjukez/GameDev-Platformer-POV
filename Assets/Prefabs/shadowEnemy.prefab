@@ -440,7 +440,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ceeba9a09636b049a7af8c17b83fa75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 342f573486c02b0408986c421a976dc5, type: 2}
+  shootRange: 10
+  shootSpeed: 20
+  spherePrefab: {fileID: 0}
+  sphereLifetime: 5
+  stats: {fileID: 11400000, guid: d17ecff86d0345e4a8e812f9f2b6488e, type: 2}
 --- !u!1 &2894067970985211570
 GameObject:
   m_ObjectHideFlags: 0
