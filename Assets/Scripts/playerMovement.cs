@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour
     public GameObject playerCapsule;
     public Rigidbody rb;
     [SerializeField] private int speed;
-    [SerializeField]private Transform playerEye;
+    [SerializeField] private Transform playerEye;
     [SerializeField] private float cameraSensitivity;
     [SerializeField] private float camlimitMin;
     [SerializeField] private float camlimitMax;
@@ -19,15 +19,17 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private float interactRange;
 
     private float camAngle = 0.0f;
+    private int jumpsRemaining = 2;
+
     private void Start()
     {
         currentSpeed = speed;
         Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
     }
+
     private void Update()
     {
-
         sprintCheck();
         mouseLook();
         RotateBody();
@@ -37,7 +39,7 @@ public class playerMovement : MonoBehaviour
             TryInterat();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(jumpKey))
         {
             TryJump();
         }
@@ -70,7 +72,8 @@ public class playerMovement : MonoBehaviour
     private void TryInterat()
     {
         RaycastHit hit;
-        if(Physics.Raycast(playerEye.position, playerEye.forward, out hit, interactRange)){
+        if (Physics.Raycast(playerEye.position, playerEye.forward, out hit, interactRange))
+        {
 
             IInteractable hitInteractable = hit.collider.gameObject.GetComponent<IInteractable>();
 
@@ -80,31 +83,36 @@ public class playerMovement : MonoBehaviour
             }
         }
     }
+
     private void TryJump()
     {
-        if (isGrounded())
+        if (jumpsRemaining > 0)
         {
+            jumpsRemaining--;
             Jump(jumpForce);
         }
     }
+
     private bool isGrounded()
     {
         RaycastHit hit;
         return Physics.Raycast(transform.position, -transform.up, out hit, 1.1f);
     }
+
     private void Jump(float jumpForce)
     {
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-        rb.AddForce(transform.up* jumpForce, ForceMode.Impulse);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
+
     void mouseLook()
     {
         float yMouse = Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
         playerEye.localRotation = Quaternion.Euler(camAngle, 0, 0);
         camAngle -= yMouse;
         camAngle = Mathf.Clamp(camAngle, camlimitMin, camlimitMax);
-
     }
+
     private void Move()
     {
         float xDir = Input.GetAxis("Horizontal");
@@ -113,5 +121,13 @@ public class playerMovement : MonoBehaviour
         Vector3 dir = transform.right * xDir + transform.forward * zDir;
 
         rb.velocity = new Vector3(0, rb.velocity.y, 0) + dir.normalized * currentSpeed;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            jumpsRemaining = 2;
+        }
     }
 }

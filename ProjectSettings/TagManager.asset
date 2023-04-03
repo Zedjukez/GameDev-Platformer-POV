@@ -6,11 +6,12 @@ TagManager:
   tags:
   - highPlatform
   - lowPlatform
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - grappleMask
   - Water
   - UI
   - 
