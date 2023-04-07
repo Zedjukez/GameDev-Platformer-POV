@@ -634,7 +634,7 @@ MonoBehaviour:
   shootSpeed: 20
   spherePrefab: {fileID: 0}
   sphereLifetime: 5
-  stats: {fileID: 11400000, guid: e6525b032e759dc47977b38434a7d6ca, type: 2}
+  stats: {fileID: 11400000, guid: 342f573486c02b0408986c421a976dc5, type: 2}
 --- !u!95 &8747597160558354731
 Animator:
   serializedVersion: 5
