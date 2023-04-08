@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/levelOne.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/victoryScreen 1.unity
+    path: Assets/Scenes/victoryScreen.unity
     guid: 50c9106da7c31f948844de794390d5fa
   m_configObjects: {}

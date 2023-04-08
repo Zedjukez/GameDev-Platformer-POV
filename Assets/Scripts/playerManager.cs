@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class playerManager : MonoBehaviour
 {
@@ -9,13 +10,11 @@ public class playerManager : MonoBehaviour
     public Image darkActive;
     public Image shadowActive;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-
+        
+        
         lightActive.gameObject.SetActive(false);
         darkActive.gameObject.SetActive(false);
         shadowActive.gameObject.SetActive(false);
@@ -25,6 +24,10 @@ public class playerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
+        
+
         if (Input.GetKeyDown("1"))
         {
             shadowActive.gameObject.SetActive(true);
